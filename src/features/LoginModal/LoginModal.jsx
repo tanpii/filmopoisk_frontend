@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./loginmodal.module.css";
-import Input from "../Input/Input";
-import { FilledButton, GhostButton } from "../Button/Button";
-import { useLoginMutation } from "../../../app/api/authApi";
-import { setLoggedIn } from "../../../features/auth/authSlice";
+import Input from "../../shared/ui/Input/Input";
+import { FilledButton, GhostButton } from "../../shared/ui/Button/Button";
+import { useLoginMutation } from "../../app/api/authApi";
+import { setLoggedIn } from "../auth/authSlice";
 
-export default function LoginModal() {
+export default function LoginModal({ closeModal }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +31,9 @@ export default function LoginModal() {
     <div className={`${styles.box}`}>
       <div className={`${styles.header}`}>
         <div className={`${styles.auth}`}>Авторизация</div>
-        <div className={`${styles.close}`}>&times;</div>
+        <div className={`${styles.close}`} onClick={closeModal}>
+          &times;
+        </div>
       </div>
       <Input
         required
@@ -50,11 +52,7 @@ export default function LoginModal() {
         Пароль
       </Input>
       <div className={`${styles.button_box}`}>
-        <FilledButton
-          type="button"
-          onClick={handleLogin}
-          disabled={isLoading}
-        >
+        <FilledButton type="button" onClick={handleLogin} disabled={isLoading}>
           {isLoading ? "Вход..." : "Войти"}
         </FilledButton>
         <GhostButton type="button" onClick={handleCancel}>

@@ -4,7 +4,6 @@ import { useGetMovieQuery } from '../../app/api/movieApi';
 import ActorList from '../../features/ActorList/ActorList';
 import MovieInfo from '../../features/MovieInfo/MovieInfo';
 import styles from './moviePage.module.css'
-import LoginModal from '../../shared/ui/LoginModal/LoginModal';
 
 export default function MoviePage() {
   const { id } = useParams();

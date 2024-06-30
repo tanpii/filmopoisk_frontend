@@ -16,6 +16,7 @@
 
 .close {
     color: #ABABAB;
+    cursor: pointer;
 }
 
 .header {

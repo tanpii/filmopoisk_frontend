@@ -1,19 +1,19 @@
 import styles from "./header.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setLoggedOut } from "../auth/authSlice"; // Укажите путь к вашему authSlice
-import { FilledButton, GhostButton } from "../../shared/ui/Button/Button";
+import { setLoggedOut } from "../../features/auth/authSlice"; // Укажите путь к вашему authSlice
+import {FilledButton, GhostButton} from "../../shared/ui/Button/Button";
 
-export default function Header() {
+export default function Header({ open }) {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(setLoggedOut()); // Вызываем action setLoggedOut для выхода пользователя
-    localStorage.removeItem("token"); // Удаляем токен из localStorage
-    // Дополнительные действия после выхода, например, перенаправление на другую страницу
-    window.location.reload(); // Пример обновления текущей страницы
+    dispatch(setLoggedOut());
+    localStorage.removeItem("token");
+    window.location.reload();
   };
+  
   return (
     <header className={`${styles.header}`}>
       Фильмопоиск
@@ -23,7 +23,7 @@ export default function Header() {
           <GhostButton onClick={handleLogout}>Выйти</GhostButton>
         </div>
       ) : (
-        <FilledButton>Войти</FilledButton>
+        <FilledButton onClick={open}>Войти</FilledButton>
       )}
     </header>
   );

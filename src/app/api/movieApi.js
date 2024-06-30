@@ -15,8 +15,6 @@ export const movieApi = createApi({
         params.page = page;
         params.limit = limit;
 
-        console.log(params);
-
         return {
           url: 'search',
           params,
@@ -26,7 +24,19 @@ export const movieApi = createApi({
     getMovie: builder.query({
       query: (id) => `movie/${id}`,
     }),
+    rateMovie: builder.mutation({
+      query: ({ movieId, user_rate }) => ({
+        url: 'rateMovie',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: { movieId, user_rate },
+      }),
+      invalidatesTags: ['Movie'],
+    }),
   }),
 });
 
-export const { useGetMoviesQuery, useGetMovieQuery } = movieApi;
+export const { useGetMoviesQuery, useGetMovieQuery, useRateMovieMutation } = movieApi;
