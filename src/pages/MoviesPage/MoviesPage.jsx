@@ -50,6 +50,10 @@ export default function MoviesPage() {
   const movies = data?.search_result || [];
   const totalPages = data?.total_pages || 0;
 
+  if (error) {
+    console.error('Ошибка получения фильмов: ', error)
+  }
+
   useEffect(() => {
     const params = {};
     if (filters.title !== '') params.title = filters.title;
@@ -102,8 +106,11 @@ export default function MoviesPage() {
         <SearchInput placeholder="Название фильма" onChange={(title) => handleFilterChange({ title })} defaultValue={title !== undefined ? title : undefined}/>
         {isLoading || isFetching ? (
           <Loader/>
-        ) : error ? (
-          <div>Ошибка загрузки фильмов</div>
+        ) : error || movies.length === 0 ? (
+          <div className={styles.error}>
+            <span className={styles.errorTitle}>Фильмы не найдены</span>
+            <span className={styles.errorDetails}>Измените запрос и попробуйте снова</span>
+          </div>
         ) : (
           <>
             <MovieList movies={movies} onMovieClick={handleMovieClick} />

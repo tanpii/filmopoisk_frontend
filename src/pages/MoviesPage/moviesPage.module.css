@@ -9,6 +9,24 @@ body {
   padding: 20px;
 }
 
+.error {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+
+.errorTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.errorDetails {
+  font-size: 14px;
+  color: var(--grey-color);
+}
+
 .filters {
   width: fit-content;
   height: fit-content;
