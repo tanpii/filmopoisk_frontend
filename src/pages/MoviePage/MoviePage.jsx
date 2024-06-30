@@ -16,11 +16,11 @@ export default function MoviePage() {
 
   if (error) {
     console.error('Ошибка при загрузке фильма: ', error)
-    return <div>Фильм не найден</div>;
+    return <div className={styles.error}>Ошибка при загрузке фильма</div>;
   }
 
   if (!movie) {
-    return <div>Фильм не найден</div>;
+    return <div className={styles.error}>Фильм не найден</div>;
   }
 
   const { actors, ...movieInfo } = movie;

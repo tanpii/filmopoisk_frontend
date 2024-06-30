@@ -5,6 +5,7 @@ import Input from "../../shared/ui/Input/Input";
 import { FilledButton, GhostButton } from "../../shared/ui/Button/Button";
 import { useLoginMutation } from "../../app/api/authApi";
 import { setLoggedIn } from "../auth/authSlice";
+import CloseIcon from '../../assets/icons/close.svg'
 
 export default function LoginModal({ closeModal }) {
   const dispatch = useDispatch();
@@ -34,9 +35,7 @@ export default function LoginModal({ closeModal }) {
     <div className={`${styles.box}`}>
       <div className={`${styles.header}`}>
         <div className={`${styles.auth}`}>Авторизация</div>
-        <div className={`${styles.close}`} onClick={closeModal}>
-          &times;
-        </div>
+        <img src={CloseIcon} className={`${styles.close}`} onClick={closeModal}/>
       </div>
       <Input
         required
@@ -56,7 +55,7 @@ export default function LoginModal({ closeModal }) {
       >
         Пароль
       </Input>
-      <div className={`${styles.button_box}`}>
+      <div className={`${styles.buttonContainer}`}>
         <FilledButton type="button" onClick={handleLogin} disabled={isLoading}>
           {isLoading ? "Вход..." : "Войти"}
         </FilledButton>

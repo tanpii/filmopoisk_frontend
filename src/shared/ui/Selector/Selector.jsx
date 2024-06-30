@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './selector.module.css';
-import ArrowDownIcon from '../../../assets/icons/arrow-down.svg';
-import ArrowUpIcon from '../../../assets/icons/arrow-up.svg';
+import ArrowDownIcon from '../../../assets/icons/arrow_down.svg';
+import ArrowUpIcon from '../../../assets/icons/arrow_up.svg';
 
 export default function Selector({ children, options, placeholder, onChange, defaultValue }) {
-  const [selectedOption, setSelectedOption] = useState({ value: null, text: '' }); // Изменено начальное значение на null
+  const [selectedOption, setSelectedOption] = useState({ value: null, text: '' });
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
 
   useEffect(() => {
-    if (defaultValue && defaultValue.value !== '0') { // Проверка на defaultValue.value !== '0'
+    if (defaultValue && defaultValue.value !== '0') {
       setSelectedOption({
-        value: defaultValue.value || null, // Изменено на null
+        value: defaultValue.value || null,
         text: defaultValue.text || '',
       });
     }
@@ -44,7 +44,7 @@ export default function Selector({ children, options, placeholder, onChange, def
     <div className={styles.customSelect} ref={selectRef}>
       <span className={styles.selectorName}>{children}</span>
       <div className={`${styles.selectContainer} ${isOpen ? styles.selectContainerOpen : ''}`} onClick={toggleOptions}>
-        <div className={`${styles.selectedValue} ${selectedOption.value === null ? styles.placeholder : ''}`}> {/* Изменено условие для placeholder */}
+        <div className={`${styles.selectedValue} ${selectedOption.value === null ? styles.placeholder : ''}`}>
           {selectedOption.text || placeholder}
         </div>
         {isOpen ? (

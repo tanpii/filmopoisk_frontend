@@ -4,26 +4,26 @@ import styles from "./modal.module.css";
 import LoginModal from "../LoginModal/LoginModal";
 
 const Modal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"; 
+      document.body.classList.add("modalOpen");
     } else {
-      document.body.style.overflow = "";
+      document.body.classList.remove("modalOpen");
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return ReactDOM.createPortal(
-    <div className={`${styles.modal_overlay}`} onClick={onClose}>
+    <div className={`${styles.modalOverlay}`} onClick={onClose}>
       <div
-        className={`${styles.modal_content}`}
+        className={`${styles.modalContent}`}
         onClick={(e) => e.stopPropagation()}
       >
         <LoginModal closeModal={onClose}></LoginModal>
       </div>
     </div>,
-    document.getElementById("modal-root")
+    document.getElementById("modal")
   );
 };
 
