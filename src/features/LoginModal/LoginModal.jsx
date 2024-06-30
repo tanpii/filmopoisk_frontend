@@ -10,6 +10,7 @@ export default function LoginModal({ closeModal }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const [login, { isLoading }] = useLoginMutation();
 
@@ -17,8 +18,10 @@ export default function LoginModal({ closeModal }) {
     try {
       const { data } = await login({ username, password });
       dispatch(setLoggedIn(data.token));
+      closeModal();
     } catch (error) {
-      console.error("Login failed:", error.message);
+      setError('неверные данные')
+      console.error("Ошибка авторизации:", error.message);
     }
   };
 
@@ -40,6 +43,7 @@ export default function LoginModal({ closeModal }) {
         placeholder={"Введите логин"}
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        error={error}
       >
         Логин
       </Input>
@@ -48,6 +52,7 @@ export default function LoginModal({ closeModal }) {
         placeholder={"Введите пароль"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        error={error}
       >
         Пароль
       </Input>

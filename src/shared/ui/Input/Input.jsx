@@ -9,7 +9,7 @@ export default function Input({
   onChange,
 }) {
   const handleChange = (event) => {
-    onChange(event); // Передаем событие onChange вверх
+    onChange(event);
   };
 
   return (

@@ -9,10 +9,11 @@
 }
 
 .button {
+  cursor: pointer;
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: #fff;
+  background: var(--border-color);
   transition: 0.3s ease-in-out;
   display: inline-flex;
   align-items: center;
@@ -21,7 +22,7 @@
 }
 
 .button[disabled] {
-  background: #e9eaedff;
+  background: var(--grey-color);
 }
 
 .button[disabled] .icon {

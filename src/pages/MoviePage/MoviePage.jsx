@@ -4,17 +4,19 @@ import { useGetMovieQuery } from '../../app/api/movieApi';
 import ActorList from '../../features/ActorList/ActorList';
 import MovieInfo from '../../features/MovieInfo/MovieInfo';
 import styles from './moviePage.module.css'
+import Loader from '../../shared/ui/Loader/Loader';
 
 export default function MoviePage() {
   const { id } = useParams();
   const { data: movie, error, isLoading } = useGetMovieQuery(id);
 
   if (isLoading) {
-    return <div>Загрузка...</div>;
+    return <Loader/>;
   }
 
   if (error) {
-    return <div>Ошибка: {error.message}</div>;
+    console.error('Ошибка при загрузке фильма: ', error)
+    return <div>Фильм не найден</div>;
   }
 
   if (!movie) {
