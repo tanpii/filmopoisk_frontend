@@ -1,0 +1,59 @@
+.customSelect {
+  position: relative;
+  width: 360px;
+}
+
+.selectContainer {
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: #fff;
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.selectContainerOpen {
+  border-color: var(--accent-color); /* Или любой другой цвет */
+}
+
+.selectedValue {
+  color: var(--dark-color);
+}
+
+.selectedValue.placeholder {
+  color: var(--grey-color);
+}
+
+.options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 360px;
+  max-height: 150px;
+  overflow-y: auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 10px #1B1F231F;
+  border-radius: var(--radius);
+  background-color: var(--light-color);
+  z-index: 1000;
+}
+
+.options li {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.options li.selected {
+  background-color: var(--border-color);
+}
+
+.options li:hover {
+  background-color: var(--border-color);
+}

@@ -1,0 +1,41 @@
+.M {
+  width: 48px;
+  height: 48px;
+}
+
+.S {
+  width: 32px;
+  height: 32px;
+}
+
+.button {
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button[disabled] {
+  background: #e9eaedff;
+}
+
+.button[disabled] .icon {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(8%);
+}
+
+.icon {
+  margin: 0 auto;
+  transition: 0.3s ease-in-out;
+}
+
+.button:hover {
+  background: #e9eaedff;
+}
+
+.button:hover .icon {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(8%);
+}

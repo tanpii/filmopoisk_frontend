@@ -1,0 +1,46 @@
+.inputContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  gap: 4px;
+}
+
+.inputName {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--dark-color);
+}
+
+.required {
+  color: var(--error-color);
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  height: 40px;
+  border-radius: 8px;
+  border: var(--border-color) solid 1px;
+  padding: 12px;
+  transition: 0.2s ease-in-out;
+}
+
+.input:hover {
+  border: var(--grey-color) solid 1px;
+}
+
+.input:focus {
+  border: var(--accent-color) solid 1px;
+}
+
+.inputError {
+  border: var(--error-color) solid 1px;
+}
+
+.error { 
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--error-color);
+}
