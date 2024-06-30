@@ -1,0 +1,5 @@
+.actorList {
+  display: flex;
+  flex-flow: row;
+  gap: 16px;
+}

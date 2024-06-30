@@ -1,0 +1,73 @@
+.movieInfo {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: start;
+  justify-content: start;
+  background-color: var(--light-color);
+  border-radius: var(--radius);
+  padding: 24px;
+  gap: 24px;
+}
+
+.mainInfoContainer {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.title {
+  flex-grow: 1;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--dark-color)
+}
+
+.poster {
+  min-width: 400px;
+  height: 500px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.poster img {
+  width: 400px;
+  min-height: 500px;
+}
+
+.details {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: start;
+  gap: 16px;
+}
+
+.meta {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  justify-content: start;
+  gap: 16px;
+}
+
+.detailName {
+  min-width: max-content;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.detail {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--dark-color);
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark-color);
+}

@@ -1,0 +1,29 @@
+body {
+  background-color: var(--background-color);
+}
+
+.moviesPage {
+  display: flex;
+  flex-flow: row;
+  gap: 20px;
+  padding: 20px;
+}
+
+.filters {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-flow: column;
+  background-color: white;
+  border-radius: var(--radius);
+  gap: 20px;
+  padding: 24px;
+}
+
+.movies {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: 16px;
+}

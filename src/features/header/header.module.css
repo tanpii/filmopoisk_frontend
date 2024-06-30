@@ -1,0 +1,29 @@
+.header {
+  color: #fff;
+  font-weight: 700;
+  font-size: 32px;
+  background: #333333;
+  width: 100%;
+  height: 88px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 26px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.box {
+  display: flex;
+  gap: 16px;
+}
+
+.img_box {
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

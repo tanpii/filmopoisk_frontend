@@ -17,6 +17,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 5px #1B1F231F;
 }
 
 .button[disabled] {

@@ -1,0 +1,25 @@
+.actor {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.photo {
+  width: 160px;
+  height: 228px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.photo img {
+  min-width: 160px;
+  height: 228px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--dark-color);
+}

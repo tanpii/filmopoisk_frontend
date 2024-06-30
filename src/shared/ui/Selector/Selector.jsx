@@ -1,18 +1,27 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './selector.module.css';
 import ArrowDownIcon from '../../../assets/icons/arrow-down.svg';
 import ArrowUpIcon from '../../../assets/icons/arrow-up.svg';
 
-export default function CustomSelector({ options, placeholder, onChange }) {
-  const [selectedOption, setSelectedOption] = useState('');
+export default function Selector({ children, options, placeholder, onChange, defaultValue }) {
+  const [selectedOption, setSelectedOption] = useState({ value: null, text: '' }); // Изменено начальное значение на null
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
 
   useEffect(() => {
-    if (selectedOption) {
-      onChange(selectedOption);
+    if (defaultValue && defaultValue.value !== '0') { // Проверка на defaultValue.value !== '0'
+      setSelectedOption({
+        value: defaultValue.value || null, // Изменено на null
+        text: defaultValue.text || '',
+      });
     }
-  }, [selectedOption, onChange]);
+  }, [defaultValue]);
+
+  const handleChange = (value, text) => {
+    setSelectedOption({ value, text });
+    setIsOpen(false);
+    onChange(value);
+  };
 
   const toggleOptions = () => {
     setIsOpen(!isOpen);
@@ -31,16 +40,12 @@ export default function CustomSelector({ options, placeholder, onChange }) {
     };
   }, []);
 
-  const handleChange = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
-
   return (
     <div className={styles.customSelect} ref={selectRef}>
+      <span className={styles.selectorName}>{children}</span>
       <div className={`${styles.selectContainer} ${isOpen ? styles.selectContainerOpen : ''}`} onClick={toggleOptions}>
-        <div className={`${styles.selectedValue} ${!selectedOption ? styles.placeholder : ''}`}>
-          {selectedOption || placeholder}
+        <div className={`${styles.selectedValue} ${selectedOption.value === null ? styles.placeholder : ''}`}> {/* Изменено условие для placeholder */}
+          {selectedOption.text || placeholder}
         </div>
         {isOpen ? (
           <img src={ArrowUpIcon} alt="arrow up" />
@@ -50,13 +55,13 @@ export default function CustomSelector({ options, placeholder, onChange }) {
       </div>
       {isOpen && (
         <ul className={styles.options}>
-          {options.map((option) => (
+          {Object.entries(options).map(([value, text]) => (
             <li
-              key={option}
-              className={selectedOption === option ? styles.selected : ''}
-              onClick={() => handleChange(option)}
+              key={value}
+              className={selectedOption.value === value ? styles.selected : ''}
+              onClick={() => handleChange(value, text)}
             >
-              {option}
+              {text}
             </li>
           ))}
         </ul>

@@ -1,0 +1,31 @@
+.box {
+  box-sizing: border-box;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 344px;
+  height: 300px;
+  gap: 24px;
+}
+
+.auth {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.close {
+    color: #ABABAB;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 296px;
+    height: 20px;
+}
+
+.button_box {
+    display: flex;
+    gap: 8px;
+}

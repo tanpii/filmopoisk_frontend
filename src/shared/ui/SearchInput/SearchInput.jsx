@@ -3,8 +3,8 @@ import SearchIcon from '../../../assets/icons/search.svg';
 import CloseIcon from '../../../assets/icons/close.svg';
 import styles from './searchInput.module.css';
 
-export default function SearchInput({ placeholder, onChange }) {
-  const [inputValue, setInputValue] = useState('');
+export default function SearchInput({ placeholder, onChange, defaultValue='' }) {
+  const [inputValue, setInputValue] = useState(defaultValue);
   const debounceTimeout = useRef(null);
 
   const debouncedOnChange = useCallback((value) => {

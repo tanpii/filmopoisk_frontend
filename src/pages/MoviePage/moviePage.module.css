@@ -1,0 +1,12 @@
+.moviePage {
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  gap: 24px;
+}
+
+.actorHeader {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
